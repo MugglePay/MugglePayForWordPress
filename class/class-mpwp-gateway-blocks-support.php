@@ -8,7 +8,7 @@ use Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodTyp
 use Automattic\WooCommerce\StoreApi\Payments\PaymentContext;
 use Automattic\WooCommerce\StoreApi\Payments\PaymentResult;
 
-final class WC_Gateway_MPWP_Blocks_Support extends AbstractPaymentMethodType {
+final class MPWP_WC_Gateway_Blocks_Support extends AbstractPaymentMethodType {
 	/**
 	 * Payment method name/id/slug.
 	 *
@@ -23,7 +23,7 @@ final class WC_Gateway_MPWP_Blocks_Support extends AbstractPaymentMethodType {
 	public function initialize() {
 		$this->settings = get_option( 'woocommerce_mpwp_settings', array() );
 
-		add_action( 'woocommerce_rest_checkout_process_payment_with_context', array( $this, 'failed_payment_notice' ), 8, 2 );
+		add_action( 'woocommerce_rest_checkout_process_payment_with_context', array( $this, 'mpwp_failed_payment_notice' ), 8, 2 );
 	}
 
 	/**
@@ -58,7 +58,7 @@ final class WC_Gateway_MPWP_Blocks_Support extends AbstractPaymentMethodType {
 			'1.2',
 			true
 		);
-		wp_set_script_translations( 'wc-mpwp-blocks', 'mpwp' );
+		wp_set_script_translations( 'wc-mpwp-blocks', 'muggle-pay' );
 		return array( "wc-mpwp-blocks" );
 	}
 
@@ -85,10 +85,10 @@ final class WC_Gateway_MPWP_Blocks_Support extends AbstractPaymentMethodType {
 	 * @param PaymentContext $context Holds context for the payment.
 	 * @param PaymentResult  $result  Result object for the payment.
 	 */
-	public function failed_payment_notice( PaymentContext $context, PaymentResult &$result ) {
+	public function mpwp_failed_payment_notice( PaymentContext $context, PaymentResult &$result ) {
 		if ( 'mpwp' === $context->payment_method ) {
 			// add_action(
-			// 	'wc_gateway_mpwp_process_payment_error',
+			// 	'mpwp_wc_gateway_process_payment_error',
 			// 	function( $failed_notice ) use ( &$result ) {
 			// 		$payment_details                 = $result->payment_details;
 			// 		$payment_details['errorMessage'] = wp_strip_all_tags( $failed_notice );

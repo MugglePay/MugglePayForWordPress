@@ -8,12 +8,12 @@ if (! defined('ABSPATH')) {
  * Sends API requests to MugglePay.
  * @see https://mugglepay.docs.stoplight.io/
  */
-class MugglePay_Request
+class MPWP_MugglePay_Request
 {
     /**
      * Pointer to gateway making the request.
      *
-     * @var WC_Gateway_MPWP
+     * @var MPWP_WC_Gateway
      */
     protected $gateway;
 
@@ -26,7 +26,7 @@ class MugglePay_Request
     /**
      * Constructor.
      *
-     * @param WC_Gateway_MPWP $gateway MugglePay gateway object.
+     * @param MPWP_WC_Gateway $gateway MugglePay gateway object.
      */
     public function __construct($gateway)
     {
@@ -80,7 +80,7 @@ class MugglePay_Request
         $url = $this->api_url . $endpoint;
 
         if (in_array($method, array( 'POST', 'PUT' ))) {
-            $args['body'] = json_encode($params);
+            $args['body'] = wp_json_encode($params);
         } else {
             $url = add_query_arg($params, $url);
         }

@@ -11,7 +11,7 @@ Description:  MugglePay is a one-stop payment solution for merchants with an onl
 Version:      1.0.1
 Author:       MugglePay
 Author URI:   https://mugglepay.com/
-Text Domain:  mpwp
+Text Domain:  muggle-pay
 Domain Path:  /i18n/languages/
 License:      GPLv3+
 License URI:  https://www.gnu.org/licenses/gpl-3.0.html
@@ -47,24 +47,24 @@ add_action('plugins_loaded', 'mpwp_init');
 /**
  * Registers WooCommerce Blocks integration.
  */
-function wc_gateway_mpwp_woocommerce_block_support() {
+function mpwp_wc_gateway_woocommerce_block_support() {
 	if ( class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
 		require_once __DIR__ . '/class/class-mpwp-gateway-blocks-support.php';
 		add_action(
 			'woocommerce_blocks_payment_method_type_registration',
 			static function( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry ) {
-				$payment_method_registry->register( new WC_Gateway_MPWP_Blocks_Support() );
+				$payment_method_registry->register( new MPWP_WC_Gateway_Blocks_Support() );
 			}
 		);
 	}
 }
-add_action( 'woocommerce_blocks_loaded', 'wc_gateway_mpwp_woocommerce_block_support' );
+add_action( 'woocommerce_blocks_loaded', 'mpwp_wc_gateway_woocommerce_block_support' );
 
 
 // Regiester Gateway To WooCommerce
 function mpwp_add_gateway_class($methods)
 {
-    $methods[] = 'WC_Gateway_MPWP';
+    $methods[] = 'MPWP_WC_Gateway';
     return $methods;
 }
 
@@ -85,7 +85,7 @@ function mpwp_cron_schedules($schedules)
     if (!isset($schedules["5min"])) {
         $schedules["5min"] = array(
             'interval' => 5 * 60,
-            'display' => __('Once every 5 minutes', 'mpwp')
+            'display' => __('Once every 5 minutes', 'muggle-pay')
         );
     }
     return $schedules;
@@ -120,10 +120,14 @@ function mpwp_order_meta_general($order)
         ?>
 
 <br class="clear" />
-<h3><?php _e('MugglePay Payment Voucher', 'mpwp'); ?>
+<h3><?php  esc_html_e('MugglePay Payment Voucher', 'muggle-pay'); ?>
 </h3>
 <div class="">
-    <p><?php echo esc_html__(__('Transaction ID: %s', 'mpwp'), $order->get_transaction_id()); ?>
+    <p>
+        <?php
+            // Translators: %s is the transaction ID.
+            printf( esc_html__( 'Transaction ID: %s', 'muggle-pay' ), esc_html( $order->get_transaction_id() ) );
+        ?>
     </p>
 </div>
 
@@ -137,7 +141,7 @@ function mpwp_order_meta_general($order)
  */
 function mpwp_plugin_languages_init()
 {
-    load_plugin_textdomain('mpwp', false, basename(dirname(__FILE__)) . '/i18n/languages/');
+    load_plugin_textdomain('muggle-pay', false, basename(dirname(__FILE__)) . '/i18n/languages/');
 }
 add_action('plugins_loaded', 'mpwp_plugin_languages_init');
 

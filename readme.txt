@@ -8,6 +8,8 @@ Stable tag: 1.0.1
 License: GPLv3+
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
+MugglePay is a WooCommerce payment gateway for accepting cryptocurrency payments with real-time settlement.
+
 == Description ==
 
 Since its establishment in 2019, MugglePay has over 14,000 registered merchants, many of whom are in the e-commerce sector. However, current integration with MugglePay requires additional development. We aim to streamline this process by launching a Woo payment plugin, also assisting merchants using other website tools to transition to Woo.
