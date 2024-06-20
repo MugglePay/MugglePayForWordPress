@@ -618,7 +618,7 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
         }
 
         foreach ($icon as $i) {
-            $icon_html .= '<img src="' . esc_attr($i) . '" alt="' . esc_attr__('MugglePay acceptance mark', 'muggle-pay') . '" />';
+            $icon_html .= '<img src="' . esc_attr($i) . '" alt="' . esc_attr__('MugglePay acceptance mark', 'muggle-pay') . '" / width="64px" height="64px">';
         }
 
         // Insert Styles
@@ -641,7 +641,7 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
      */
     protected function get_icon_image($method, $country)
     {
-        $uri = get_stylesheet_directory_uri();
+
         switch ($method) {
             case '':
                 $icon = '/mugglepay-logo-c.png';
@@ -661,7 +661,7 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
             default:
                 return '';
         }
-        return apply_filters('woocommerce_mpwp_icon', $uri . '/assets/images/' .$icon);
+        return apply_filters('woocommerce_mpwp_icon', MPWP_PLUGIN_URL . '/assets/images/' .$icon);
     }
 
     /**

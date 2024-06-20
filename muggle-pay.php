@@ -8,7 +8,7 @@ if (! defined('ABSPATH')) {
 Plugin Name:  MugglePay
 Plugin URI:   https://mugglepay.com/
 Description:  MugglePay is a one-stop payment solution for merchants with an online payment need.
-Version:      1.0.1
+Version:      1.0.2
 Author:       MugglePay
 Author URI:   https://mugglepay.com/
 Text Domain:  muggle-pay

@@ -4,7 +4,7 @@ Tags: mugglepay woocommerce alipay wechat btc digital payment
 Requires at least: 5.3
 Tested up to: 6.4.2
 Requires PHP: 7.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3+
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -75,6 +75,9 @@ Clicking the Manage button on the right hand side will take you into the setting
 1. MugglePay Payment Setting Pages
 
 == Changelog ==
+
+=== 1.0.2 ===
+*  Code Improvements
 
 === 👉  1.0.1 ===
 
