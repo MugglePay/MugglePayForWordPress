@@ -2,7 +2,7 @@
 Contributors: MugglePay
 Tags: mugglepay woocommerce alipay wechat btc digital payment
 Requires at least: 5.3
-Tested up to: 6.4.2
+Tested up to: 6.5.5
 Requires PHP: 7.0
 Stable tag: 1.0.2
 License: GPLv3+

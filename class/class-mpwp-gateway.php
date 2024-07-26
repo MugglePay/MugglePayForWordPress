@@ -30,79 +30,79 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
         $this->id           = 'mpwp';
         $this->icon         = '';
         $this->has_fields   = false;
-        $this->order_button_text = __('Proceed to MugglePay', 'muggle-pay');
-        $this->method_title      = __('MugglePay', 'muggle-pay');
+        $this->order_button_text = __('Proceed to MugglePay', 'mugglepay');
+        $this->method_title      = __('MugglePay', 'mugglepay');
 
         $this->gateway_methods = array(
             'muggle_pay_methods' => array(
-                'title' => __('MugglePay', 'muggle-pay'),
+                'title' => __('MugglePay', 'mugglepay'),
                 'currency'   => '',
-                'order_button_text' => __('Proceed to MugglePay', 'muggle-pay')
+                'order_button_text' => __('Proceed to MugglePay', 'mugglepay')
             ),
             // 'card_methods'    => array(
-            //     'title' => __('Card', 'muggle-pay'),
+            //     'title' => __('Card', 'mugglepay'),
             //     'currency'   => 'CARD',
-            //     'order_button_text' => __('Proceed to Card', 'muggle-pay')
+            //     'order_button_text' => __('Proceed to Card', 'mugglepay')
             // ),
             // 'alipay_methods'    => array(
-            //     'title' => __('Alipay', 'muggle-pay'),
+            //     'title' => __('Alipay', 'mugglepay'),
             //     'currency'   => 'ALIPAY',
-            //     'order_button_text' => __('Proceed to Alipay', 'muggle-pay')
+            //     'order_button_text' => __('Proceed to Alipay', 'mugglepay')
             // ),
             // 'alipay_global_methods' => array(
-            //     'title' => __('Alipay Global', 'muggle-pay'),
+            //     'title' => __('Alipay Global', 'mugglepay'),
             //     'currency'   => 'ALIGLOBAL',
-            //     'order_button_text' => __('Proceed to Alipay Global', 'muggle-pay')
+            //     'order_button_text' => __('Proceed to Alipay Global', 'mugglepay')
             // ),
             // 'wechat_methods'    => array(
-            //     'title' => __('Wechat', 'muggle-pay'),
+            //     'title' => __('Wechat', 'mugglepay'),
             //     'currency'   => 'WECHAT',
-            //     'order_button_text' => __('Proceed to Wechat', 'muggle-pay')
+            //     'order_button_text' => __('Proceed to Wechat', 'mugglepay')
             // ),
             // 'btc_methods'       => array(
-            //     'title' => __('BTC', 'muggle-pay'),
+            //     'title' => __('BTC', 'mugglepay'),
             //     'currency'   => 'BTC',
-            //     'order_button_text' => __('Proceed to BTC', 'muggle-pay')
+            //     'order_button_text' => __('Proceed to BTC', 'mugglepay')
             // ),
             // 'ltc_methods'       => array(
-            //     'title' => __('LTC', 'muggle-pay'),
+            //     'title' => __('LTC', 'mugglepay'),
             //     'currency'   => 'LTC',
-            //     'order_button_text' => __('Proceed to LTC', 'muggle-pay')
+            //     'order_button_text' => __('Proceed to LTC', 'mugglepay')
             // ),
             // 'eos_methods'       => array(
-            //     'title' => __('EOS', 'muggle-pay'),
+            //     'title' => __('EOS', 'mugglepay'),
             //     'currency'   => 'EOS',
-            //     'order_button_text' => __('Proceed to EOS', 'muggle-pay')
+            //     'order_button_text' => __('Proceed to EOS', 'mugglepay')
             // ),
             // 'bch_methods'       => array(
-            //     'title' => __('BCH', 'muggle-pay'),
+            //     'title' => __('BCH', 'mugglepay'),
             //     'currency'   => 'BCH',
-            //     'order_button_text' => __('Proceed to BCH', 'muggle-pay')
+            //     'order_button_text' => __('Proceed to BCH', 'mugglepay')
             // ),
             // 'lbtc_methods'      => array(
-            //     'title' => __('LBTC (for Lightening BTC)', 'muggle-pay'),
+            //     'title' => __('LBTC (for Lightening BTC)', 'mugglepay'),
             //     'currency'   => 'LBTC',
-            //     'order_button_text' => __('Proceed to LBTC', 'muggle-pay')
+            //     'order_button_text' => __('Proceed to LBTC', 'mugglepay')
             // ),
             // 'cusd_methods'      => array(
-            //     'title' => __('CUSD (for Celo Dollars)', 'muggle-pay'),
+            //     'title' => __('CUSD (for Celo Dollars)', 'mugglepay'),
             //     'currency'   => 'CUSD',
-            //     'order_button_text' => __('Proceed to CUSD', 'muggle-pay')
+            //     'order_button_text' => __('Proceed to CUSD', 'mugglepay')
             // ),
             'usdt_methods'      => array(
-                'title' => __('USDT', 'muggle-pay'),
+                'title' => __('USDT', 'mugglepay'),
                 'currency'   => 'USDT',
-                'order_button_text' => __('Proceed to USDT', 'muggle-pay')
+                'order_button_text' => __('Proceed to USDT', 'mugglepay')
             ),
             'usdc_methods'      => array(
-                'title' => __('USDC', 'muggle-pay'),
+                'title' => __('USDC', 'mugglepay'),
                 'currency'   => 'USDC',
-                'order_button_text' => __('Proceed to USDC', 'muggle-pay')
+                'order_button_text' => __('Proceed to USDC', 'mugglepay')
             ),
             'eth_methods'       => array(
-                'title' => __('ETH', 'muggle-pay'),
+                'title' => __('ETH', 'mugglepay'),
                 'currency'   => 'ETH',
-                'order_button_text' => __('Proceed to ETH', 'muggle-pay')
+                'order_button_text' => __('Proceed to ETH', 'mugglepay')
             ),
         );
 
@@ -145,9 +145,9 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
             if (empty(self::$log)) {
                 self::$log = wc_get_logger();
             }
-            self::$log->log($level, $message, array( 'source' => 'muggle-pay' ));
+            self::$log->log($level, $message, array( 'source' => 'mugglepay' ));
             if ($is_end) {
-                self::$log->log($level, '=========================================== ↑↑↑ END ↑↑↑ ===========================================', array( 'source' => 'muggle-pay' ));
+                self::$log->log($level, '=========================================== ↑↑↑ END ↑↑↑ ===========================================', array( 'source' => 'mugglepay' ));
             }
         }
     }
@@ -172,29 +172,29 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
     {
         $this->form_fields = array(
             'enabled'       => array(
-                'title'         => __('Enable/Disable', 'muggle-pay'),
+                'title'         => __('Enable/Disable', 'mugglepay'),
                 'type'          => 'checkbox',
-                'label'         => __('Enable MugglePay', 'muggle-pay'),
+                'label'         => __('Enable MugglePay', 'mugglepay'),
                 'default'       => 'no'
             ),
             'title'                 => array(
-                'title'       => __('Title', 'muggle-pay'),
+                'title'       => __('Title', 'mugglepay'),
                 'type'        => 'text',
-                'description' => __('This controls the title which the user sees during checkout.', 'muggle-pay'),
-                'default'     => __('MugglePay', 'muggle-pay'),
+                'description' => __('This controls the title which the user sees during checkout.', 'mugglepay'),
+                'default'     => __('MugglePay', 'mugglepay'),
                 'desc_tip'    => true,
             ),
             'description'           => array(
-                'title'       => __('Description', 'muggle-pay'),
+                'title'       => __('Description', 'mugglepay'),
                 'type'        => 'text',
                 'desc_tip'    => true,
-                'description' => __('This controls the description which the user sees during checkout.', 'muggle-pay'),
-                'default'     => __('MugglePay is a one-stop payment solution for merchants with an online payment need.', 'muggle-pay'),
+                'description' => __('This controls the description which the user sees during checkout.', 'mugglepay'),
+                'default'     => __('MugglePay is a one-stop payment solution for merchants with an online payment need.', 'mugglepay'),
             ),
             'check_orders'      => array(
-                'title'       => __('Check Orders', 'muggle-pay'),
+                'title'       => __('Check Orders', 'mugglepay'),
                 'type'        => 'title',
-                'description' => __('The plugin automatically checks the order payment status by default and updates the order status every 5 minutes.', 'muggle-pay'),
+                'description' => __('The plugin automatically checks the order payment status by default and updates the order status every 5 minutes.', 'mugglepay'),
             ),
             // <br>You can click the button to check and update the payment status of all outstanding orders.
             // 'check_orders_btn'      => array(
@@ -202,34 +202,34 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
             //     'type'        => 'title'
             // ),
             'setting'              => array(
-                'title'       => __('Setting', 'muggle-pay'),
+                'title'       => __('Setting', 'mugglepay'),
                 'type'        => 'title',
                 'description' => '',
             ),
             'api_key'               => array(
-                'title'       => __('API Auth Token (API key) ', 'muggle-pay'),
+                'title'       => __('API Auth Token (API key) ', 'mugglepay'),
                 'type'        => 'text',
                 'placeholder' => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
                 /* translators: %s: URL */
-                'description' => sprintf(__('Register your MugglePay merchant accounts with your invitation code and get your API key at <a href="%1$s" target="_blank">Merchants Portal</a>. You will find your API Auth Token (API key) for authentication. <a href="%2$s" target="_blank">MORE</a>', 'muggle-pay'), 'https://merchants.mugglepay.com/user/register', 'https://mugglepay.docs.stoplight.io/api-overview/authentication'),
+                'description' => sprintf(__('Register your MugglePay merchant accounts with your invitation code and get your API key at <a href="%1$s" target="_blank">Merchants Portal</a>. You will find your API Auth Token (API key) for authentication. <a href="%2$s" target="_blank">MORE</a>', 'mugglepay'), 'https://merchants.mugglepay.com/user/register', 'https://mugglepay.docs.stoplight.io/api-overview/authentication'),
             ),
             'button_styles'               => array(
-                'title'       => __('Button Styles', 'muggle-pay'),
+                'title'       => __('Button Styles', 'mugglepay'),
                 'type'        => 'textarea',
                 'placeholder' => '.payment_method_muggle_pay_methods { any; }',
                 /* translators: %s: URL */
-                'description' => __('If the style of your payment page is not displayed properly, you can overwrite your new style here', 'muggle-pay'),
+                'description' => __('If the style of your payment page is not displayed properly, you can overwrite your new style here', 'mugglepay'),
             ),
             'debug'          => array(
-                'title'       => __('Debug log', 'muggle-pay'),
+                'title'       => __('Debug log', 'mugglepay'),
                 'type'        => 'checkbox',
-                'label'       => __('Enable logging', 'muggle-pay'),
+                'label'       => __('Enable logging', 'mugglepay'),
                 'default'     => 'no',
                 // translators: Description for 'Debug log' section of settings page.
-                'description' => sprintf(__('Log MPWP API events inside %s', 'muggle-pay'), '<code>' . WC_Log_Handler_File::get_log_file_path('mpwp') . '</code>'),
+                'description' => sprintf(__('Log MPWP API events inside %s', 'mugglepay'), '<code>' . WC_Log_Handler_File::get_log_file_path('mpwp') . '</code>'),
             ),
             'payment_gateway'              => array(
-                'title'       => __('Payment Gateway', 'muggle-pay'),
+                'title'       => __('Payment Gateway', 'mugglepay'),
                 'type'        => 'title',
                 'description' => '',
             )
@@ -282,7 +282,7 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
         $order = wc_get_order($order_id);
 
         if (! $order || ! $order->get_transaction_id()) {
-            return new WP_Error('error', __('Refund failed.', 'muggle-pay'));
+            return new WP_Error('error', __('Refund failed.', 'mugglepay'));
         }
 
         $result = $this->refund_transaction($order, $amount, $reason);
@@ -440,7 +440,7 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
             'price_currency'	=> $order->get_currency(),
             'pay_currency'		=> $pay_currency,
             // Translators: %s is the order ID.
-            'title'				=> sprintf(__('Payment order #%s', 'muggle-pay'), $order->get_id()),
+            'title'				=> sprintf(__('Payment order #%s', 'mugglepay'), $order->get_id()),
             'description'		=> $description,
             'callback_url'		=> WC()->api_request_url('MPWP_WC_Gateway'),
             'cancel_url'		=> esc_url_raw($order->get_cancel_order_url_raw()),
@@ -504,7 +504,7 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
         if (is_wp_error($raw_response)) {
             return $raw_response;
         } elseif (empty($raw_response['status'] || $raw_response['status'] !== 200)) {
-            return new WP_Error('error', __('Empty Response', 'muggle-pay'));
+            return new WP_Error('error', __('Empty Response', 'mugglepay'));
         }
 
         return (object) $raw_response;
@@ -537,67 +537,67 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
     {
         switch ($code) {
             case 'AUTHENTICATION_FAILED':
-                return __('Authentication Token is not set or expired.', 'muggle-pay');
+                return __('Authentication Token is not set or expired.', 'mugglepay');
             case 'INVOICE_NOT_EXIST':
-                return __('Invoice does not exist.', 'muggle-pay');
+                return __('Invoice does not exist.', 'mugglepay');
             case 'INVOICE_VERIFIED_ALREADY':
-                return __('It has been verified already.', 'muggle-pay');
+                return __('It has been verified already.', 'mugglepay');
             case 'INVOICE_CANCELED_FAIILED':
-                return __('Invoice does not exist, or it cannot be canceled.', 'muggle-pay');
+                return __('Invoice does not exist, or it cannot be canceled.', 'mugglepay');
             case 'ORDER_NO_PERMISSION':
-                return __('Order does not exist or permission denied.', 'muggle-pay');
+                return __('Order does not exist or permission denied.', 'mugglepay');
             case 'ORDER_CANCELED_FAIILED':
-                return __('Order does not exist, or it cannot be canceled.', 'muggle-pay');
+                return __('Order does not exist, or it cannot be canceled.', 'mugglepay');
             case 'ORDER_REFUND_FAILED':
-                return __('Order does not exist, or it`s status is not refundable.', 'muggle-pay');
+                return __('Order does not exist, or it`s status is not refundable.', 'mugglepay');
             case 'ORDER_VERIFIED_ALREADY':
-                return __('Payment has been verified with payment already.', 'muggle-pay');
+                return __('Payment has been verified with payment already.', 'mugglepay');
             case 'ORDER_VERIFIED_PRICE_NOT_MATCH':
-                return __('Payment money does not match the order money, please double check the price.', 'muggle-pay');
+                return __('Payment money does not match the order money, please double check the price.', 'mugglepay');
             case 'ORDER_VERIFIED_MERCHANT_NOT_MATCH':
-                return __('Payment money does not the order of current merchant , please double check the order.', 'muggle-pay');
+                return __('Payment money does not the order of current merchant , please double check the order.', 'mugglepay');
             case 'ORDER_NOT_VALID':
-                return __('Order id is not valid.', 'muggle-pay');
+                return __('Order id is not valid.', 'mugglepay');
             case 'ORDER_PAID_FAILED':
-                return __('Order not exist or is not paid yet.', 'muggle-pay');
+                return __('Order not exist or is not paid yet.', 'mugglepay');
             case 'ORDER_MERCHANTID_EXIST':
-                return __('Order with same merchant_order_id exisits.', 'muggle-pay');
+                return __('Order with same merchant_order_id exisits.', 'mugglepay');
             case 'ORDER_NOT_NEW':
-                return __('The current order is not new, and payment method cannot be switched.', 'muggle-pay');
+                return __('The current order is not new, and payment method cannot be switched.', 'mugglepay');
             case 'PAYMENT_NOT_AVAILABLE':
-                return __('The payment method is not working, please retry later.', 'muggle-pay');
+                return __('The payment method is not working, please retry later.', 'mugglepay');
             case 'MERCHANT_CALLBACK_STATUS_WRONG':
-                return __('The current payment status not ready to send callback.', 'muggle-pay');
+                return __('The current payment status not ready to send callback.', 'mugglepay');
             case 'PARAMETERS_MISSING':
-                return __('Missing parameters.', 'muggle-pay');
+                return __('Missing parameters.', 'mugglepay');
             case 'PAY_PRICE_ERROR':
                 switch ($this->current_method) {
                     case 'WECHAT':
                     case 'ALIPAY':
                     case 'ALIGLOBAL':
-                        return __('The payment is temporarily unavailable, please use another payment method', 'muggle-pay');
+                        return __('The payment is temporarily unavailable, please use another payment method', 'mugglepay');
                 }
-                return __('Price amount or currency is not set correctly.', 'muggle-pay');
+                return __('Price amount or currency is not set correctly.', 'mugglepay');
             case 'CREDENTIALS_NOT_MATCH':
-                return __('The email or password does not match.', 'muggle-pay');
+                return __('The email or password does not match.', 'mugglepay');
             case 'USER_NOT_EXIST':
-                return __('The user does not exist or no permission.', 'muggle-pay');
+                return __('The user does not exist or no permission.', 'mugglepay');
             case 'USER_FAILED':
-                return __('The user operatioin failed.', 'muggle-pay');
+                return __('The user operatioin failed.', 'mugglepay');
             case 'INVITATION_FAILED':
-                return __('The invitation code is not filled correctly.', 'muggle-pay');
+                return __('The invitation code is not filled correctly.', 'mugglepay');
             case 'ERROR':
-                return __('Error.', 'muggle-pay');
+                return __('Error.', 'mugglepay');
             case '(Unauthorized)':
-                return __('API credentials are not valid', 'muggle-pay');
+                return __('API credentials are not valid', 'mugglepay');
             case '(Not Found)':
-                return __('Page, action not found', 'muggle-pay');
+                return __('Page, action not found', 'mugglepay');
             case '(Too Many Requests)':
-                return __('API request limit is exceeded', 'muggle-pay');
+                return __('API request limit is exceeded', 'mugglepay');
             case '(InternalServerError)':
-                return __('Server error in MugglePay', 'muggle-pay');
+                return __('Server error in MugglePay', 'mugglepay');
         }
-        return __('Server error in MugglePay', 'muggle-pay');
+        return __('Server error in MugglePay', 'mugglepay');
     }
     
     /**
@@ -618,7 +618,7 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
         }
 
         foreach ($icon as $i) {
-            $icon_html .= '<img src="' . esc_attr($i) . '" alt="' . esc_attr__('MugglePay acceptance mark', 'muggle-pay') . '" / width="64px" height="64px">';
+            $icon_html .= '<img src="' . esc_attr($i) . '" alt="' . esc_attr__('MugglePay acceptance mark', 'mugglepay') . '" / width="24px" height="24px">';
         }
 
         // Insert Styles
@@ -629,7 +629,7 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
             $icon_html .= '</style>';
         }
 
-        return apply_filters('woocommerce_gateway_icon', $icon_html, $this->id);
+        return apply_filters('mpwp_gateway_icon', $icon_html, $this->id);
     }
     
     /**
@@ -661,7 +661,7 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
             default:
                 return '';
         }
-        return apply_filters('woocommerce_mpwp_icon', MPWP_PLUGIN_URL . '/assets/images/' .$icon);
+        return apply_filters('mpwp_gateway_icon_image', MPWP_PLUGIN_URL . '/assets/images/' .$icon);
     }
 
     /**

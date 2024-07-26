@@ -9,9 +9,9 @@ Plugin Name:  MugglePay
 Plugin URI:   https://mugglepay.com/
 Description:  MugglePay is a one-stop payment solution for merchants with an online payment need.
 Version:      1.0.2
-Author:       MugglePay
-Author URI:   https://mugglepay.com/
-Text Domain:  muggle-pay
+Author:       Shawn
+Author URI:   https://x.com/shawnmuggle
+Text Domain:  mugglepay
 Domain Path:  /i18n/languages/
 License:      GPLv3+
 License URI:  https://www.gnu.org/licenses/gpl-3.0.html
@@ -35,8 +35,8 @@ function mpwp_init()
         add_action('woocommerce_order_details_after_order_table', 'mpwp_order_meta_general');
         // add_filter( 'woocommerce_email_order_meta_fields', 'cb_custom_woocommerce_email_order_meta_fields', 10, 3 );
         // add_filter( 'woocommerce_email_actions', 'cb_register_email_action' );
-        add_action('admin_print_footer_scripts', 'mpwp_admin_load_script');
-        add_action('woocommerce_settings_start', 'mpwp_admin_load_style');
+        add_action('admin_enqueue_scripts', 'mpwp_admin_load_scripts');
+        add_action('wp_enqueue_scripts', 'mpwp_public_style');
         // add payment gateway filter
         add_filter('woocommerce_available_payment_gateways', 'mpwp_filter_woocommerce_available_payment_gateways', 10, 1);
     }
@@ -85,7 +85,7 @@ function mpwp_cron_schedules($schedules)
     if (!isset($schedules["5min"])) {
         $schedules["5min"] = array(
             'interval' => 5 * 60,
-            'display' => __('Once every 5 minutes', 'muggle-pay')
+            'display' => __('Once every 5 minutes', 'mugglepay')
         );
     }
     return $schedules;
@@ -120,13 +120,13 @@ function mpwp_order_meta_general($order)
         ?>
 
 <br class="clear" />
-<h3><?php  esc_html_e('MugglePay Payment Voucher', 'muggle-pay'); ?>
+<h3><?php  esc_html_e('MugglePay Payment Voucher', 'mugglepay'); ?>
 </h3>
 <div class="">
     <p>
         <?php
             // Translators: %s is the transaction ID.
-            printf( esc_html__( 'Transaction ID: %s', 'muggle-pay' ), esc_html( $order->get_transaction_id() ) );
+            printf( esc_html__( 'Transaction ID: %s', 'mugglepay' ), esc_html( $order->get_transaction_id() ) );
         ?>
     </p>
 </div>
@@ -141,7 +141,7 @@ function mpwp_order_meta_general($order)
  */
 function mpwp_plugin_languages_init()
 {
-    load_plugin_textdomain('muggle-pay', false, basename(dirname(__FILE__)) . '/i18n/languages/');
+    load_plugin_textdomain('mugglepay', false, basename(dirname(__FILE__)) . '/i18n/languages/');
 }
 add_action('plugins_loaded', 'mpwp_plugin_languages_init');
 
@@ -172,35 +172,24 @@ function mpwp_filter_woocommerce_available_payment_gateways($available_gateways)
          
 
 /**
- * Init admin setting hook
+ * Public style hook
  */
-function mpwp_admin_load_style()
-{
-    ?>
-<style>
-    #woocommerce_mpwp_payment_gateway+.form-table {
-        display: none;
-    }
-
-    .mpwp-custom-payment_gateway .titledesc {
-        display: none;
-    }
-
-    .mpwp-custom-payment_gateway tr[valign="top"] {
-        display: inline-block;
-    }
-</style>
-<?php
+function mpwp_public_style() {
+    wp_register_style( 'mpwp-public-style', MPWP_PLUGIN_URL.'/assets/css/mpwp-public.css', array(), 2 );
+    wp_enqueue_style( 'mpwp-public-style' );
 }
-function mpwp_admin_load_script()
-{
-    ?>
-<script>
-    var $ = jQuery;
-    if ($('#woocommerce_mpwp_payment_gateway').length) {
-        $('#woocommerce_mpwp_payment_gateway + .form-table').addClass('mpwp-custom-payment_gateway');
-        $('#woocommerce_mpwp_payment_gateway + .form-table').show();
-    }
-</script>
-<?php
+
+/**
+ * Admin style and script hook
+ */
+function mpwp_admin_load_scripts() {
+
+    wp_register_style( 'wpmp-admin-style', MPWP_PLUGIN_URL.'/assets/css/wpmp-admin.css', array(), 1 );
+    wp_enqueue_style( 'wpmp-admin-style' );
+    
+    wp_enqueue_script('jquery');
+    
+    wp_register_script( 'wpmp-admin-script', MPWP_PLUGIN_URL.'/assets/js/wpmp-admin.js', array(), 1, true );
+    wp_enqueue_script( 'wpmp-admin-script' );
+
 }

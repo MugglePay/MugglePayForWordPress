@@ -58,7 +58,7 @@ final class MPWP_WC_Gateway_Blocks_Support extends AbstractPaymentMethodType {
 			'1.2',
 			true
 		);
-		wp_set_script_translations( 'wc-mpwp-blocks', 'muggle-pay' );
+		wp_set_script_translations( 'wc-mpwp-blocks', 'mugglepay' );
 		return array( "wc-mpwp-blocks" );
 	}
 
