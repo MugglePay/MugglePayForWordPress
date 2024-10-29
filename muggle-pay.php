@@ -8,7 +8,7 @@ if (! defined('ABSPATH')) {
 Plugin Name:  MugglePay
 Plugin URI:   https://mugglepay.com/
 Description:  MugglePay is a one-stop payment solution for merchants with an online payment need.
-Version:      1.0.2
+Version:      1.0.4
 Author:       Shawn
 Author URI:   https://x.com/shawnmuggle
 Text Domain:  mugglepay
@@ -123,12 +123,12 @@ function mpwp_order_meta_general($order)
 <h3><?php  esc_html_e('MugglePay Payment Voucher', 'mugglepay'); ?>
 </h3>
 <div class="">
-    <p>
-        <?php
+  <p>
+    <?php
             // Translators: %s is the transaction ID.
             printf( esc_html__( 'Transaction ID: %s', 'mugglepay' ), esc_html( $order->get_transaction_id() ) );
         ?>
-    </p>
+  </p>
 </div>
 
 <?php

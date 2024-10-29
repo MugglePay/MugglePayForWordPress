@@ -123,9 +123,15 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
 
         self::$log_enabled = $this->debug;
 
+        // Setup callback URL
+        $this->callback_url = WC()->api_request_url($this->id);
+
         add_action('woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ));
-        add_action('woocommerce_api_wc_gateway_mpwp', array( $this, 'check_response' ));
+        // add_action('woocommerce_api_wc_gateway_mpwp', array( $this, 'check_response' ));
         add_filter('woocommerce_order_data_store_cpt_get_orders_query', array( $this, 'custom_query_var' ), 10, 2);
+        add_action('woocommerce_api_' . $this->id, array($this, 'check_response'));
+
+	
         // add_action('woocommerce_cancelled_order', array( $this, 'cancel_order' ), 10 ,1);
         // add_action( 'woocommerce_order_status_processing', array( $this, 'capture_payment' ) );
         // add_action( 'woocommerce_order_status_completed', array( $this, 'capture_payment' ) );
@@ -442,7 +448,7 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
             // Translators: %s is the order ID.
             'title'				=> sprintf(__('Payment order #%s', 'mugglepay'), $order->get_id()),
             'description'		=> $description,
-            'callback_url'		=> WC()->api_request_url('MPWP_WC_Gateway'),
+            'callback_url'		=> $this->callback_url,
             'cancel_url'		=> esc_url_raw($order->get_cancel_order_url_raw()),
             'success_url'		=> esc_url_raw($this->get_return_url($order)),
             'mobile'			=> wp_is_mobile(),
