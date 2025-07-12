@@ -63,6 +63,10 @@ You will need to set up an account on MugglePay Merchant Portal <https://merchan
 
 == Changelog ==
 
+=== 1.0.9 ===
+*  Support USDC Stellar and Stellar XLM payments.
+
+
 === 1.0.8 ===
 *  Added Settings link on plugins page
 
