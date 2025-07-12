@@ -4,12 +4,11 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-use Automattic\WooCommerce\StoreApi\Exceptions\RouteException;
-
 /**
  * MugglePayForWP Gateway Class.
  */
-class MPWP_WC_Gateway extends WC_Payment_Gateway
+
+class MPWP_WC_Eth extends WC_Payment_Gateway
 {
     /** @var Multi Method */
     public $current_method = '';
@@ -29,84 +28,11 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
         // Create muggle request
         $this->mpwp_mugglepay_request  = new MPWP_MugglePay_Request($this);
 
-        $this->id           = 'mpwp';
+        $this->id           = 'eth_methods';
         $this->icon         = '';
         $this->has_fields   = false;
         $this->order_button_text = __('Proceed to MugglePay', 'mugglepay');
         $this->method_title      = __('MugglePay', 'mugglepay');
-
-        $this->gateway_methods = array(
-            'muggle_pay_methods' => array(
-                'title' => __('MugglePay', 'mugglepay'),
-                'currency'   => '',
-                'order_button_text' => __('Proceed to MugglePay', 'mugglepay')
-            ),
-            // 'card_methods'    => array(
-            //     'title' => __('Card', 'mugglepay'),
-            //     'currency'   => 'CARD',
-            //     'order_button_text' => __('Proceed to Card', 'mugglepay')
-            // ),
-            // 'alipay_methods'    => array(
-            //     'title' => __('Alipay', 'mugglepay'),
-            //     'currency'   => 'ALIPAY',
-            //     'order_button_text' => __('Proceed to Alipay', 'mugglepay')
-            // ),
-            // 'alipay_global_methods' => array(
-            //     'title' => __('Alipay Global', 'mugglepay'),
-            //     'currency'   => 'ALIGLOBAL',
-            //     'order_button_text' => __('Proceed to Alipay Global', 'mugglepay')
-            // ),
-            // 'wechat_methods'    => array(
-            //     'title' => __('Wechat', 'mugglepay'),
-            //     'currency'   => 'WECHAT',
-            //     'order_button_text' => __('Proceed to Wechat', 'mugglepay')
-            // ),
-            // 'btc_methods'       => array(
-            //     'title' => __('BTC', 'mugglepay'),
-            //     'currency'   => 'BTC',
-            //     'order_button_text' => __('Proceed to BTC', 'mugglepay')
-            // ),
-            // 'ltc_methods'       => array(
-            //     'title' => __('LTC', 'mugglepay'),
-            //     'currency'   => 'LTC',
-            //     'order_button_text' => __('Proceed to LTC', 'mugglepay')
-            // ),
-            // 'eos_methods'       => array(
-            //     'title' => __('EOS', 'mugglepay'),
-            //     'currency'   => 'EOS',
-            //     'order_button_text' => __('Proceed to EOS', 'mugglepay')
-            // ),
-            // 'bch_methods'       => array(
-            //     'title' => __('BCH', 'mugglepay'),
-            //     'currency'   => 'BCH',
-            //     'order_button_text' => __('Proceed to BCH', 'mugglepay')
-            // ),
-            // 'lbtc_methods'      => array(
-            //     'title' => __('LBTC (for Lightening BTC)', 'mugglepay'),
-            //     'currency'   => 'LBTC',
-            //     'order_button_text' => __('Proceed to LBTC', 'mugglepay')
-            // ),
-            // 'cusd_methods'      => array(
-            //     'title' => __('CUSD (for Celo Dollars)', 'mugglepay'),
-            //     'currency'   => 'CUSD',
-            //     'order_button_text' => __('Proceed to CUSD', 'mugglepay')
-            // ),
-            'usdt_methods'      => array(
-                'title' => __('USDT', 'mugglepay'),
-                'currency'   => 'USDT',
-                'order_button_text' => __('Proceed to USDT', 'mugglepay')
-            ),
-            'usdc_methods'      => array(
-                'title' => __('USDC', 'mugglepay'),
-                'currency'   => 'USDC',
-                'order_button_text' => __('Proceed to USDC', 'mugglepay')
-            ),
-            'eth_methods'       => array(
-                'title' => __('ETH', 'mugglepay'),
-                'currency'   => 'ETH',
-                'order_button_text' => __('Proceed to ETH', 'mugglepay')
-            ),
-        );
 
         // supported features.
         $this->supports     = array(
@@ -115,8 +41,8 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
         );
 
         // Load the settings.
-        $this->init_form_fields();
-        $this->init_settings();
+        // $this->init_form_fields();
+        // $this->init_settings();
 
         // Define user set variables.
         $this->title                = $this->get_option('title');
@@ -133,7 +59,7 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
         add_filter('woocommerce_order_data_store_cpt_get_orders_query', array( $this, 'custom_query_var' ), 10, 2);
         add_action('woocommerce_api_' . $this->id, array($this, 'check_response'));
 
-	
+    
         // add_action('woocommerce_cancelled_order', array( $this, 'cancel_order' ), 10 ,1);
         // add_action( 'woocommerce_order_status_processing', array( $this, 'capture_payment' ) );
         // add_action( 'woocommerce_order_status_completed', array( $this, 'capture_payment' ) );
@@ -160,18 +86,18 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
         }
     }
 
-	/**
-	 * Check if MPWP gateway is enabled.
-	 *
-	 * @return bool
-	 */
-	public function is_available() {
-		if ( 'yes' == $this->enabled && $this->get_option('api_key') ) {
-			return true;
-		}
-		return false;
+    /**
+     * Check if MPWP gateway is enabled.
+     *
+     * @return bool
+     */
+    public function is_available() {
+        if ( 'yes' == $this->enabled && $this->get_option('api_key') ) {
+            return true;
+        }
+        return false;
 
-	}
+    }
 
     /**
      * Initialise Gateway Settings Form Fields.
@@ -267,8 +193,10 @@ class MPWP_WC_Gateway extends WC_Payment_Gateway
         $result = $this->get_payment_url($order, $this->current_method);
         
         if (is_wp_error($result)) {
-            // wc_add_notice($result->get_error_message(), 'error');
-			throw new RouteException( 'woocommerce_rest_checkout_process_payment_error', esc_html($result->get_error_message() ), 400 );
+            wc_add_notice($result->get_error_message(), 'failure');
+            return array(
+                'result'   => 'failure',
+            );
             return;
         }
 

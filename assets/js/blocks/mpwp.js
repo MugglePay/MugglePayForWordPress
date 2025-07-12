@@ -1,35 +1,29 @@
-(() => {
-	const { wcSettings, wcBlocksRegistry } = window.wc;
+const { registerPaymentMethod } = window.wc.wcBlocksRegistry;
 
-	const data = wcSettings.getSetting("mpwp_data");
+const mpwp_data = window.wc.wcSettings.getSetting("mpwp_data");
 
-	console.log('data', data)
+const mpwp_label = wp.htmlEntities.decodeEntities(mpwp_data.title || "");
 
-    const mpwpTitle = wp.htmlEntities.decodeEntities(data.title || "");
-	const decodeDescription = () => wp.htmlEntities.decodeEntities(data.description || "");
+const mpwp_Content = () => {
+	return wp.htmlEntities.decodeEntities(mpwp_data.description || "");
+}
 
-	const mpwpPaymentMethod = {
-		name: "mpwp",
-		ariaLabel: mpwpTitle,
-		label: window.React.createElement(
-			() => {
-				return window.React.createElement(() => mpwpTitle);
-			},
-			null
-		),
-		content: window.React.createElement(decodeDescription, null),
-		edit: window.React.createElement(decodeDescription, null),
-		canMakePayment: () => {
-			console.log("canMakePaymentcanMakePayment");
-			console.log("canMakePayment");
-			return true;
-		},
-		supports: {
-			showSavedCards: false,
-			showSaveOption: false,
-			features: data.supports,
-		},
-	};
+const mpwp_Label = (props) => {
+	const { PaymentMethodLabel } = props.components;
+	return React.createElement(PaymentMethodLabel, { text: mpwp_label });
+}
 
-	wcBlocksRegistry.registerPaymentMethod(mpwpPaymentMethod);
-})();
+registerPaymentMethod({
+	name: "mpwp",
+	title: React.createElement(mpwp_Label),
+	description: React.createElement(mpwp_Content),
+	label: React.createElement(mpwp_Label),
+	content: React.createElement(mpwp_Content),
+	gatewayId : "mpwp",
+	edit: React.createElement(mpwp_Content),
+	canMakePayment: () => true,
+	ariaLabel: mpwp_label,
+	supports: {
+		features: mpwp_data.supports,
+	}
+});

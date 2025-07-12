@@ -8,13 +8,13 @@ use Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodTyp
 use Automattic\WooCommerce\StoreApi\Payments\PaymentContext;
 use Automattic\WooCommerce\StoreApi\Payments\PaymentResult;
 
-final class MPWP_WC_Gateway_Blocks_Support extends AbstractPaymentMethodType {
+final class MPWP_WC_Eth_Methods extends AbstractPaymentMethodType {
 	/**
 	 * Payment method name/id/slug.
 	 *
 	 * @var string
 	 */
-	protected $name = 'mpwp';
+	protected $name = 'eth_methods';
 
 	private $gateway;
 
@@ -24,10 +24,10 @@ final class MPWP_WC_Gateway_Blocks_Support extends AbstractPaymentMethodType {
 	public function initialize() {
 
 		$this->settings = get_option( 'woocommerce_mpwp_settings', array() );
-		
+
 		$gateways = WC()->payment_gateways->payment_gateways();
-		
-		$this->gateway  = $gateways[ $this->name ];
+
+		$this->gateway  = $gateways[ 'mpwp' ];
 
 		add_action( 'woocommerce_rest_checkout_process_payment_with_context', array( $this, 'mpwp_failed_payment_notice' ), 8, 2 );
 	}
@@ -38,15 +38,7 @@ final class MPWP_WC_Gateway_Blocks_Support extends AbstractPaymentMethodType {
 	 * @return boolean
 	 */
 	public function is_active() {
-		// $payment_gateways_class = WC()->payment_gateways();
-		// $payment_gateways       = $payment_gateways_class->payment_gateways();
-		// if ( ! isset( $payment_gateways[ $this->name ] ) ) {
-		// 	return false;
-		// }
-
-		// return $payment_gateways[ $this->name ]->is_available();
-		
-		return ! empty( $this->settings[ 'enabled' ] ) && 'yes' === $this->settings[ 'enabled' ];
+		return ! empty( $this->settings[ $this->name ] ) && 'yes' === $this->settings[ $this->name ];
 	}
 
 	/**
@@ -55,19 +47,19 @@ final class MPWP_WC_Gateway_Blocks_Support extends AbstractPaymentMethodType {
 	 * @return array
 	 */
 	public function get_payment_method_script_handles() {
-		$script_url = plugins_url( "/assets/js/blocks/mpwp.js", MPWP_MAIN_FILE );
+		$script_url = plugins_url( "/assets/js/blocks/eth_methods.js", MPWP_MAIN_FILE );
 	
 		wp_register_script(
-			"wc-mpwp-blocks",
+			"eth_methods",
 			$script_url,
 			array(  'wp-element', 'wc-blocks-checkout', 'react', 'wc-blocks-registry', 'wc-settings', 'wp-html-entities', 'wp-i18n'),
-			'1.4',
+			'1.2',
 			true
 		);
 
-		wp_set_script_translations( 'wc-mpwp-blocks', 'mugglepay' );
+		wp_set_script_translations( 'eth_methods', 'eth_methods' );
 
-		return array( "wc-mpwp-blocks" );
+		return array( "eth_methods" );
 	}
 
 	/**
@@ -76,13 +68,12 @@ final class MPWP_WC_Gateway_Blocks_Support extends AbstractPaymentMethodType {
 	 * @return array
 	 */
 	public function get_payment_method_data() {
-		$payment_gateways_class = WC()->payment_gateways();
-		$payment_gateways       = $payment_gateways_class->payment_gateways();
-		$gateway                = $payment_gateways[ $this->name ];
+		
 		return array(
-			'title'             => $this->get_setting( 'title' ),
-			'description'       => $this->get_setting( 'description' ),
+			'title'             => $this->gateway->gateway_methods['eth_methods']['title'],
+			'description'       => '',
 			'supports'          => array_filter( $this->gateway->supports, array( $this->gateway, 'supports' ) ),
+            'icon'              => MPWP_PLUGIN_URL . '/assets/images/eth.png',
 			'allow_saved_cards' => is_user_logged_in(),
 		);
 	}
@@ -94,7 +85,7 @@ final class MPWP_WC_Gateway_Blocks_Support extends AbstractPaymentMethodType {
 	 * @param PaymentResult  $result  Result object for the payment.
 	 */
 	public function mpwp_failed_payment_notice( PaymentContext $context, PaymentResult &$result ) {
-		if ( 'mpwp' === $context->payment_method ) {
+		if ( 'eth_methods' === $context->payment_method ) {
 			// add_action(
 			// 	'mpwp_wc_gateway_process_payment_error',
 			// 	function( $failed_notice ) use ( &$result ) {

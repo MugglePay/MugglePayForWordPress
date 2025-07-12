@@ -1,4 +1,11 @@
-#woocommerce_mpwp_payment_gateway+.form-table {
+tr[data-gateway_id="muggle_pay_methods"],
+tr[data-gateway_id="usdt_methods"],
+tr[data-gateway_id="usdc_methods"],
+tr[data-gateway_id="eth_methods"],
+#muggle_pay_methods.woocommerce-item__payment-gateway,
+#usdt_methods.woocommerce-item__payment-gateway,
+#usdc_methods.woocommerce-item__payment-gateway,
+#eth_methods.woocommerce-item__payment-gateway {
     display: none;
 }
 
